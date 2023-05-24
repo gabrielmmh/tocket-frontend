@@ -4,12 +4,12 @@ const Home = () => {
   return (
     <section className="w-full flex-center flex-col">
       <h1 className='head_text text-center'>
-        Discover & Share
+        Eventos
         <br className="max-md:hidden"/>
-        <span className="orange_gradient text-center"> AI-Powered Prompts</span>
+        <span className="purple_gradient text-center"> Bombando</span>
       </h1>
-      <p classsName="desc text-center">
-        Promptopia is an open-source AI prompting tool for modern world to discover, create and share creative prompts
+      <p className="desc text-center">
+        Mineiro safadinho, que adora uma festinha e um bom papo.
       </p>
 
       <Feed/>
