@@ -38,8 +38,12 @@ const Feed = () => {
 
   return (
     <section className="feed">
-      <form className="relative w-full flex-center">
-        <h3>Eventos bombando</h3>
+      <form className="flex flex-row grow-1 w-full flex-center justify-evenly ">
+      <h1 className='head_text text-center'>
+        Eventos
+        <br className="max-md:hidden"/>
+        <span className="purple_gradient text-center ml-3"> Bombando</span>
+      </h1>
         <input
           type="text"
           placeholder="Pesquisar"
@@ -55,7 +59,7 @@ const Feed = () => {
         handleTagClick={() => {}}
       />
 
-      <h1 className='head_text text-center'>
+      <h1 className='head_text_us text-center'>
         About Us
         <br className="max-md:hidden"/>
       </h1>

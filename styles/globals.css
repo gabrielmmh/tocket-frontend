@@ -16,10 +16,11 @@
   justify-content: center;
   /* padding: 120px 24px 160px 24px; */
   pointer-events: none;
+  background-color: rgb(181, 183, 251);
 }
 
 .main:before {
-  background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.825) 0, #4016fc14 100%);
   position: absolute;
   content: "";
   z-index: 2;
@@ -86,7 +87,11 @@
 }
 
 .head_text {
-  @apply mt-5 text-5xl font-montserrat leading-[1.15] text-black sm:text-6xl;
+  @apply flex flex-row w-1/2 text-2xl font-montserrat leading-[1.15] text-black sm:text-5xl mr-1 ml-2 flex-nowrap;
+}
+
+.head_text_us {
+  @apply flex flex-row w-auto text-2xl font-montserrat leading-[1.15] text-black sm:text-5xl flex-nowrap;
 }
 
 .purple_gradient {
@@ -106,7 +111,7 @@
 }
 
 .search_input {
-  @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-montserrat pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
+  @apply block w-1/2 rounded-full border border-gray-200 bg-white py-2.5 font-montserrat pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0 ml-1 mr-2;
 }
 
 .copy_btn {
@@ -123,7 +128,7 @@
 
 /* Feed Component */
 .feed {
-  @apply mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2;
+  @apply mt-1 mx-auto w-full max-w-5xl flex justify-center items-center flex-col gap-2;
 }
 
 /* Form Component */
@@ -150,7 +155,7 @@
 
 /* PromptCard Component */
 .prompt_card {
-  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
+  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit m-2;
 }
 
 .flex-center {
