@@ -38,8 +38,14 @@ const Feed = () => {
 
   return (
     <section className="feed">
-      <form className="relative w-full flex-center">
-        <h3>Eventos bombando</h3>
+      <form className="flex flex-row grow-1 w-full flex-center justify-evenly ">
+      <h1 className='head_text text-center'>
+        Eventos Bombando
+        {/*
+        <br className="max-md:hidden"/>
+        <span className="purple_gradient text-center ml-3"> Bombando</span>
+        */}
+      </h1>
         <input
           type="text"
           placeholder="Pesquisar"
@@ -50,17 +56,19 @@ const Feed = () => {
         />
       </form>
 
+    <div className="prompt_box flex flex-row justify-center flex-wrap">
       <PromptCardList
         data={posts}
         handleTagClick={() => {}}
       />
+    </div>
 
-      <h1 className='head_text text-center'>
+      <h1 className='head_text_us text-center'>
         About Us
         <br className="max-md:hidden"/>
       </h1>
-      <div className='prompt_card'>
-        <p>A Tocket é um marketplace de ingressos, que possibilita a venda primária e secundária por meio de contratos inteligentes na blockchain. Somos um grupo de alunos de engenharia de computação no Insper com o objetivo de garantir ao máximo a segurança e praticidade na compra e venda de ingressos.</p>
+      <div className='about_card'>
+        <p className='text-white' >A Tocket é um marketplace de ingressos, que possibilita a venda primária e secundária por meio de contratos inteligentes na blockchain. Somos um grupo de alunos de engenharia de computação no Insper com o objetivo de garantir ao máximo a segurança e praticidade na compra e venda de ingressos.</p>
       </div>
 
       
