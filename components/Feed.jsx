@@ -138,12 +138,17 @@ const Feed = () => {
       />
     </div>
 
+    <button className="bg-gradient-to-r from-[#040666] to-[#490a8b] hover:from-[#490a8b] hover:to-[#040666] text-white text-3xl font-montserrat py-6 px-20 rounded-full mb-10 transition duration-2000">
+      Marketplace
+    </button>
+
+
       <h1 className='head_text_us text-center'>
         About Us
         <br className="max-md:hidden"/>
       </h1>
       <div className='about_card'>
-        <p className='text-white' >A Tocket é um marketplace de ingressos, que possibilita a venda primária e secundária por meio de contratos inteligentes na blockchain. Somos um grupo de alunos de engenharia de computação no Insper com o objetivo de garantir ao máximo a segurança e praticidade na compra e venda de ingressos.</p>
+        <p className='text-white text-center' >A Tocket é um marketplace de ingressos, que possibilita a venda primária e secundária por meio de contratos inteligentes na blockchain. Somos um grupo de alunos de engenharia de computação no Insper com o objetivo de garantir ao máximo a segurança e praticidade na compra e venda de ingressos.</p>
       </div>
 
       
