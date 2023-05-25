@@ -67,7 +67,7 @@ const Feed = () => {
         About Us
         <br className="max-md:hidden"/>
       </h1>
-      <div className='prompt_card'>
+      <div className='about_card'>
         <p className='text-white' >A Tocket é um marketplace de ingressos, que possibilita a venda primária e secundária por meio de contratos inteligentes na blockchain. Somos um grupo de alunos de engenharia de computação no Insper com o objetivo de garantir ao máximo a segurança e praticidade na compra e venda de ingressos.</p>
       </div>
 
