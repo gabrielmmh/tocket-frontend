@@ -6,12 +6,13 @@ import PromptCard from './PromptCard';
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return(
-    <div className="mt-16 prompt_layout">
+    <div className="profile_layout">
       {data.map((post) => (
         <PromptCard
           key={post._id}
           post={post}
           handleTagClick={handleTagClick}
+          classname={"prompt_card"}
         />
       ))}
     </div>
@@ -87,6 +88,17 @@ const Feed = () => {
             name: "Nome 5",
             email: "nome5@mail.com"
           },
+        },
+        
+        {
+          _id: "6",
+          title: "Titulo 6",
+          description: "Descricao 6",
+
+          user: {
+            name: "Nome 6",
+            email: "nome6@mail.com"
+          },
         }
       ];
 
@@ -101,7 +113,7 @@ const Feed = () => {
 
   return (
     <section className="feed">
-      <form className="flex flex-row grow-1 w-full flex-center justify-evenly ">
+      <form className="flex flex-row grow-1 w-full flex-center justify-evenly">
       <h1 className='head_text text-center'>
         Eventos Bombando
         {/*
@@ -119,7 +131,7 @@ const Feed = () => {
         />
       </form>
 
-    <div className="prompt_box flex flex-row justify-center flex-wrap">
+    <div className="prompt_box">
       <PromptCardList
         data={posts}
         handleTagClick={() => {}}

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 
-const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
+const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick, classname }) => {
   // const { data: session } = useSession();
   const data = post;
   const pathName = usePathname();
@@ -28,7 +28,7 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
   };
 
   return (
-    <div className='profile_card'>
+    <div className={classname}>
       <div className='flex justify-between items-start gap-5'>
         <div
           className='flex-1 flex justify-start items-center gap-3 cursor-pointer'
@@ -43,10 +43,10 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
           /> */}
 
           <div className='flex flex-col'>
-            <h3 className='font-satoshi font-semibold text-gray-900'>
+            <h3 className='font-montserrat text-white/80'>
               {post.user.name}
             </h3>
-            <p className='font-inter text-sm text-gray-500'>
+            <p className='font-montserrat text-white/70 text-sm '>
               {post.user.email}
             </p>
           </div>
