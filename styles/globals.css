@@ -122,8 +122,14 @@
   @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5;
 }
 
-.prompt_layout {
-  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
+.profile_layout {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 2fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 /* Feed Component */
@@ -153,6 +159,10 @@
   @apply text-sm font-montserrat text-gray-700 hover:text-gray-500 font-medium;
 }
 
+/* profileCard Component */
+.profile_card {
+  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
+
 /* PromptCard Component */
 .prompt_card {
   @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit m-2;
@@ -164,6 +174,7 @@
 
 .prompt_box{
   @apply rounded-xl bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5 mt-5 mb-5;	
+
 }
 
 .flex-center {

@@ -6,7 +6,8 @@ import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 
 const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
+  const data = post;
   const pathName = usePathname();
   const router = useRouter();
 
@@ -27,26 +28,26 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
   };
 
   return (
-    <div className='prompt_card'>
+    <div className='profile_card'>
       <div className='flex justify-between items-start gap-5'>
         <div
           className='flex-1 flex justify-start items-center gap-3 cursor-pointer'
           onClick={handleProfileClick}
         >
-          <Image
+          {/* <Image
             src={post.creator.image}
             alt='user_image'
             width={40}
             height={40}
             className='rounded-full object-contain'
-          />
+          /> */}
 
           <div className='flex flex-col'>
             <h3 className='font-satoshi font-semibold text-gray-900'>
-              {post.creator.username}
+              {post.user.name}
             </h3>
             <p className='font-inter text-sm text-gray-500'>
-              {post.creator.email}
+              {post.user.email}
             </p>
           </div>
         </div>
@@ -73,7 +74,8 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
         #{post.tag}
       </p>
 
-      {session?.user.id === post.creator._id && pathName === "/profile" && (
+      {/* {session?.user.id === post.creator._id && pathName === "/profile" && ( */}
+      {/* {pathName === "/profile" && ( */}
         <div className='mt-5 flex-center gap-4 border-t border-gray-100 pt-3'>
           <p
             className='font-inter text-sm green_gradient cursor-pointer'
@@ -88,7 +90,7 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
             Delete
           </p>
         </div>
-      )}
+      {/* )} */}
     </div>
   );
 };
