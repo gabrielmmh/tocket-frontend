@@ -138,7 +138,7 @@ const Feed = () => {
       />
     </div>
 
-    <button className="bg-gradient-to-r from-[#040666] to-[#490a8b] hover:from-[#490a8b] hover:to-[#040666] text-white text-3xl font-montserrat py-6 px-20 rounded-full mb-10 transition duration-2000">
+    <button className="marketplace hover:animate-pulse">
       Marketplace
     </button>
 

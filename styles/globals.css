@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 /* 
   Note: The styles for this gradient grid background is heavily inspired by the creator of this amazing site (https://dub.sh) – all credits go to them! 
@@ -79,7 +79,15 @@
 }
 
 .black_btn {
-  @apply rounded-full border border-black bg-white py-1.5 px-5 text-black transition-all hover:bg-white hover:text-black text-center text-sm font-montserrat flex items-center justify-center;
+  @apply rounded-full border border-black bg-white py-1.5 px-5 text-black transition-all hover:bg-white/50 hover:text-black text-center text-sm font-montserrat flex items-center justify-center;
+}
+
+/* .marketplace{
+  @apply bg-gradient-to-r from-[#040666] to-[#490a8b] hover:from-[#490a8b] hover:to-[#040666] text-white text-3xl font-montserrat py-6 px-20 rounded-full mb-10;
+} */
+
+.marketplace {
+  @apply rounded-full bg-gradient-to-r from-[#040666] to-[#490a8b] py-6 px-20 text-white transition-all duration-700 hover:from-[#490a8b] hover:to-[#040666] text-center text-sm text-3xl font-montserrat flex items-center justify-center mb-10;
 }
 
 .outline_btn {
@@ -166,7 +174,7 @@
 
 /* PromptCard Component */
 .prompt_card {
-  @apply flex-1 break-inside-avoid rounded-lg bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[300px] w-full h-fit m-2;
+  @apply flex-1 break-inside-avoid rounded-lg bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[300px] w-full h-fit m-2 hover:animate-pulse;
 }
 
 .about_card {
