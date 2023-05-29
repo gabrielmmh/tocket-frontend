@@ -2,12 +2,14 @@
 
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import Image from "next/image";
 
 
 const Event = () => {
   const router = useRouter();
   const { data: session } = useSession();
+  const searchParams = useSearchParams();
   const eventId = searchParams.get('id');
 
   const [event, setEvent] = useState({});
@@ -63,8 +65,8 @@ const Event = () => {
     <div>
       <Image
         src={event.photo}
-        // width={37}
-        // height={37}
+        width={100}
+        height={100}
         // className='rounded-full'
         alt={`${event.name} photo`}
         // onClick={() => setToggleDropdown(!toggleDropdown)}
