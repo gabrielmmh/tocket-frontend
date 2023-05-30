@@ -80,18 +80,44 @@ const Nav = () => {
 
             <div className='relative'>
               <div onClick={() => setBurgerDropdown(!burgerDropdown)}>
-                <div className='h-0.5 w-5 bg-white mb-1.5'></div>
-                <div className='h-0.5 w-5 bg-white mb-1.5'></div>
-                <div className='h-0.5 w-5 bg-white'></div>
+                {burgerDropdown ? (
+                  <div className='w-5 h-5 relative'>
+                    <div
+                      className='absolute h-0.5 w-full bg-white transition-all duration-250 ease-in-out'
+                      style={{ 
+                        top: '50%', 
+                        left: '50%', 
+                        transform: 'translate(-50%, -50%) rotate(45deg)' 
+                      }}
+                    ></div>
+                    <div
+                      className='absolute h-0.5 w-full bg-white transition-all duration-250 ease-in-out'
+                      style={{ 
+                        top: '50%', 
+                        left: '50%', 
+                        transform: 'translate(-50%, -50%) rotate(-45deg)' 
+                      }}
+                    ></div>
+                  </div>
+                ) : (
+                  <div className='flex flex-col items-center justify-center'>
+                    <div className='h-0.5 w-5 bg-white transition-all duration-500 ease-in-out'></div>
+                    <div className='h-0.5 w-5 bg-white transition-all duration-500 ease-in-out mt-1.5 mb-1.5'></div>
+                    <div className='h-0.5 w-5 bg-white transition-all duration-500 ease-in-out'></div>
+                  </div>
+                )}
               </div>
               {burgerDropdown && (
-                <div className='dropdown bg-[#010130] opacity-90'>
-                  <p className='dropdown_link'>Text 1</p>
-                  <p className='dropdown_link'>Text 2</p>
-                  <p className='dropdown_link'>Text 3</p>
+                <div className='dropdown'>
+                  <p className='dropdown_link'>Eventos Bombando</p>
+                  <p className='dropdown_link'>Marketplace</p>
+                  <p className='dropdown_link'>About Us</p>
                 </div>
               )}
             </div>
+
+
+
           </div>
         )}
       </div>
