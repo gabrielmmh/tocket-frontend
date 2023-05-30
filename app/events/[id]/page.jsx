@@ -2,30 +2,34 @@
 
 import { SessionProvider, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
+import { get } from "mongoose";
 
 
 const Event = () => {
   const router = useRouter();
   const { data: session } = useSession();
-  const searchParams = useSearchParams();
-  const eventId = searchParams.get('id');
   const pathname = usePathname();
+  const [event, setEvent] = useState({name : "festa" ,img : "https://i.imgur.com/4NZ6uLY.png"});
+  const [poke, setPoke] = useState({});
 
-  const [event, setEvent] = useState({});
+  const getPoke = async () => {
+    console.log(event.name)
+    const response = await fetch(`http://localhost:8000/poke/event/${event.name}`);
+    const data = await response.json();
+    setPoke(data);
+  };
+
+  const getEvent = async () => {
+    const response = await fetch(`http://localhost:8000${pathname}`);
+    const data = await response.json();
+    setEvent(data);
+  };
 
   useEffect(() => {
-    const getEvent = async () => {
-      console.log("usePathName:", pathname);
-      console.log("eventId:", eventId);
-      const response = await fetch(`http://localhost:8000${pathname}`);
-      const data = await response.json();
-
-      setEvent(data);
-    };
-
     getEvent();
+    getPoke();
   }, []);
 
   const buyEvent = async () => {
@@ -75,7 +79,17 @@ const Event = () => {
           alt={`${event.name} photo`}
           // onClick={() => setToggleDropdown(!toggleDropdown)}
         />
+        <Image
+          src={poke.png}
+          width={100}
+          height={100}
+          // className='rounded-full'
+          alt={`${poke.pokemon} photo`}
+          // onClick={() => setToggleDropdown(!toggleDropdown)}
+        />
         <h1>{event.name}</h1>
+        <p>{poke.c1}</p>
+        <p>{poke.c2}</p>
         <p>{event.info}</p>
         <p>{event.date}</p>
         {/* <p>{event.price}</p>
