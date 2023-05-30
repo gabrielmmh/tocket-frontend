@@ -249,39 +249,41 @@ const Feed = () => {
       </div>
 
       <div className='dev_card'>
-        <img 
-          src='/assets/images/profilePlaceHolder.jpg'
-          alt='Profile1'
-          width={120}
-          height={40}
-          className='dev_img'
-        />      
-          
-        <img 
-          src='/assets/images/profilePlaceHolder.jpg'
-          alt='Profile2'
-          width={120}
-          height={40}
-          className='dev_img'
-        />
+  <div className='dev_person'>
+    <div 
+      className='dev_img hover:animate-pulse'
+      style={{ backgroundImage: "url('/assets/images/pedro.jpg')" }}
+    />
+    <p className='text-white font-montserrat p-1 mt-2'>Pedro Civita</p>
+  </div>
 
-        <img 
-          src='/assets/images/profilePlaceHolder.jpg'
-          alt='Profile3'
-          width={120}
-          height={40}
-          className='dev_img'
-        />
+  <div className='dev_person'>
+    <div 
+      className='dev_img hover:animate-pulse'
+      style={{ backgroundImage: "url('/assets/images/arthur.jpg')" }}
+    />
+    <p className='text-white font-montserrat p-1 mt-2'>Arthur Tamm</p>
+  </div>
 
-        <img 
-          src='/assets/images/profilePlaceHolder.jpg'
-          alt='Profile4'
-          width={120}
-          height={40}
-          className='dev_img'
-        />
+  <div className='dev_person'>
+    <div 
+      className='dev_img hover:animate-pulse'
+      style={{ backgroundImage: "url('/assets/images/gabriel.jpg')" }}
+    />
+    <p className='text-white font-montserrat p-1 mt-2'>Gabriel Hermida</p>
+  </div>
 
-      </div>
+  <div className='dev_person'>
+    <div 
+      className='dev_img hover:animate-pulse'
+      style={{ backgroundImage: "url('/assets/images/caio.jpg')" }}
+    />
+    <p className='text-white font-montserrat p-1 mt-2'>Caio Bôa</p>
+  </div>
+</div>
+
+
+
 
       
     </section>

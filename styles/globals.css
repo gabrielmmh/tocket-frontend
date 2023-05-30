@@ -188,7 +188,17 @@
 }
 
 .dev_img {
-  @apply rounded-full object-contain;
+  @apply rounded-full w-32 h-32 bg-center bg-cover;
+}
+
+.dev_img::before {
+  content: "";
+  float: left;
+  padding-top: 100%;
+}
+
+.dev_person {
+  @apply flex flex-col items-center text-center;
 }
 
 .prompt_box{
