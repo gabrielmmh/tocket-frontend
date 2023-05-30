@@ -4,14 +4,12 @@ import { SessionProvider, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
-import { get } from "mongoose";
-
 
 const Event = () => {
   const router = useRouter();
   const { data: session } = useSession();
   const pathname = usePathname();
-  const [event, setEvent] = useState({name : "festa" ,img : "https://i.imgur.com/4NZ6uLY.png"});
+  const [event, setEvent] = useState({});
   const [poke, setPoke] = useState({});
 
   const getPoke = async () => {
@@ -29,8 +27,14 @@ const Event = () => {
 
   useEffect(() => {
     getEvent();
-    getPoke();
   }, []);
+
+  useEffect(() => {
+    if (event.name){
+      getPoke();
+    }
+    console.log('atualiza ae carai')
+  }, event.name);
 
   const buyEvent = async () => {
     const response = await fetch(`/event/${eventId}/save`, {
@@ -71,7 +75,8 @@ const Event = () => {
   return (
     <SessionProvider session={session}>
       <div>
-        <Image
+        {poke.png && (
+          <Image
           src={event.img}
           width={100}
           height={100}
@@ -79,7 +84,10 @@ const Event = () => {
           alt={`${event.name} photo`}
           // onClick={() => setToggleDropdown(!toggleDropdown)}
         />
-        <Image
+        )}
+
+        {event.img && (
+          <Image
           src={poke.png}
           width={100}
           height={100}
@@ -87,6 +95,8 @@ const Event = () => {
           alt={`${poke.pokemon} photo`}
           // onClick={() => setToggleDropdown(!toggleDropdown)}
         />
+        )}
+            
         <h1>{event.name}</h1>
         <p>{poke.c1}</p>
         <p>{poke.c2}</p>
