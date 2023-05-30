@@ -18,6 +18,18 @@ const Nav = () => {
     })();
   }, []);
 
+  const postUser = async (user) => {
+    const response = await fetch("http://localhost:8000/users/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+    const data = await response.json();
+    console.log(data);
+  };
+
   return (
     <nav className='flex-between w-full mb-16 pt-3 pb-3 px-16 bg-gradient-to-r from-[#040666] to-[#490a8b]'>
       <Link href='/' className='flex gap-2 flex-center'>
@@ -34,10 +46,6 @@ const Nav = () => {
       <div className='sm:flex hidden'>
         {session?.user ? (
           <div className='flex gap-3 md:gap-5'>
-            <Link href='/create-prompt' className='black_btn'>
-              Create Post
-            </Link>
-
             <button type='button' onClick={signOut} className='outline_btn'>
               Sign Out
             </button>
@@ -61,6 +69,7 @@ const Nav = () => {
                   key={provider.name}
                   onClick={() => {
                     signIn(provider.id);
+                    postUser(session?.user);
                   }}
                   className='black_btn'
                 >

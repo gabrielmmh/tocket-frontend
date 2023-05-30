@@ -4,8 +4,17 @@ const nextConfig = {
       appDir: true,
       serverComponentsExternalPackages: ["mongoose"],
     },
+    // images: {
+      // domains: ['lh3.googleusercontent.com', 'd106p58duwuiz5.cloudfront.net', "images.sympla.com.br", "s3.guicheweb.com.br", 
+      // "images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com"],
+    // },
     images: {
-      domains: ['lh3.googleusercontent.com', 'd106p58duwuiz5.cloudfront.net', "images.sympla.com.br"],
+      remotePatterns: [
+        {
+          protocol: "https",
+          hostname: "**",
+        },
+      ],
     },
     webpack(config) {
       config.experiments = {
