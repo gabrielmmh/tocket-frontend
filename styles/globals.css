@@ -87,7 +87,14 @@
 } */
 
 .marketplace {
-  @apply rounded-full bg-gradient-to-r from-[#040666] to-[#490a8b] py-6 px-20 text-white transition-all duration-700 hover:from-[#490a8b] hover:to-[#040666] text-center text-sm text-3xl font-montserrat flex items-center justify-center mb-10;
+  @apply rounded-full bg-gradient-to-r from-[#040666] to-[#490a8b] text-white transition-all duration-700 hover:from-[#490a8b] hover:to-[#040666] text-center text-sm text-2xl sm:text-3xl font-montserrat flex items-center justify-center mb-10;
+}
+
+.marketplace {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .outline_btn {
@@ -95,11 +102,11 @@
 }
 
 .head_text {
-  @apply flex flex-row w-1/2 text-2xl font-montserrat leading-[1.15] text-white sm:text-5xl mr-1 ml-2 flex-nowrap;
+  @apply flex flex-row w-1/2 text-3xl font-montserrat leading-[1.15] text-white sm:text-5xl mr-1 ml-2 flex-nowrap;
 }
 
 .head_text_us {
-  @apply flex flex-row w-auto text-2xl font-montserrat leading-[1.15] text-white sm:text-5xl flex-nowrap;
+  @apply flex flex-row w-auto text-3xl font-montserrat leading-[1.15] text-white sm:text-5xl flex-nowrap;
 }
 
 .purple_gradient {
@@ -146,7 +153,7 @@
 
 /* Feed Component */
 .feed {
-  @apply mt-1 mx-auto w-full max-w-5xl flex justify-center items-center flex-col gap-2;
+  @apply mt-1 mx-auto w-full max-w-5xl flex justify-center items-center flex-col gap-2 pl-2 pr-2;
 }
 
 /* Form Component */
@@ -164,7 +171,7 @@
 }
 
 .dropdown {
-  @apply absolute right-0 top-full mt-3 w-2/3 p-5 rounded-lg min-w-[400px] flex flex-col gap-2 justify-start items-start text-2xl;
+  @apply absolute right-0 top-full mt-3 w-2/3 p-5 rounded-lg min-w-[400px] flex flex-col gap-2 justify-start items-start text-2xl z-10;
   background-color: rgba(1, 1, 48, 0.8); /* #010130 with 90% opacity */
 }
 
@@ -192,7 +199,7 @@
 }
 
 .dev_img {
-  @apply rounded-full w-32 h-32 bg-center bg-cover;
+  @apply rounded-full w-16 h-16 md:w-24 md:h-24 sm:w-32 sm:h-32 bg-center bg-cover;
 }
 
 .dev_img::before {
