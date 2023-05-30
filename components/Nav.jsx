@@ -10,6 +10,7 @@ const Nav = () => {
 
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
+  const [burgerDropdown, setBurgerDropdown] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -18,13 +19,13 @@ const Nav = () => {
     })();
   }, []);
 
-  const postUser = async (user) => {
+  const postUser = async (sessionId) => {
     const response = await fetch("http://localhost:8000/users/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify(sessionId),
     });
     const data = await response.json();
     console.log(data);
@@ -42,43 +43,80 @@ const Nav = () => {
         />
       </Link>
 
-      {/* Desktop Navigation */}
-      <div className='sm:flex hidden'>
-        {session?.user ? (
-          <div className='flex gap-3 md:gap-5'>
-            <button type='button' onClick={signOut} className='outline_btn'>
-              Sign Out
-            </button>
-
-            <Link href='/profile'>
-              <Image
-                src={session?.user.image}
-                width={37}
-                height={37}
-                className='rounded-full'
-                alt='profile'
-              />
-            </Link>
-          </div>
-        ) : (
-          <>
-            {providers &&
-              Object.values(providers).map((provider) => (
-                <button
-                  type='button'
-                  key={provider.name}
-                  onClick={() => {
-                    signIn(provider.id);
-                    postUser(session?.user);
-                  }}
-                  className='black_btn'
-                >
-                  Sign in
-                </button>
-              ))}
-          </>
-        )}
+{/* Desktop Navigation */}
+<div className='sm:flex hidden items-center'>
+  {session?.user ? (
+    <div className='flex gap-3 md:gap-5'>
+      <button type='button' onClick={signOut} className='black_btn'>
+        Sign Out
+      </button>
+      <Link href='/profile'>
+        <Image
+          src={session?.user.image}
+          width={37}
+          height={37}
+          className='rounded-full'
+          alt='profile'
+        />
+      </Link>
+    </div>
+  ) : (
+    <>
+      {providers &&
+        Object.values(providers).map((provider) => (
+          <button
+            type='button'
+            key={provider.name}
+            onClick={() => {
+              signIn(provider.id);
+              postUser(session?.user);
+            }}
+            className='black_btn'
+          >
+            Sign in
+          </button>
+        ))}
+    </>
+  )}
+  <div className='relative ml-4'>
+    <div onClick={() => setBurgerDropdown(!burgerDropdown)}>
+      {burgerDropdown ? (
+        <div className='w-5 h-5 relative'>
+          <div
+            className='absolute h-0.5 w-full bg-white transition-all duration-500 ease-in-out'
+            style={{ 
+              top: '50%', 
+              left: '50%', 
+              transform: 'translate(-50%, -50%) rotate(45deg)' 
+            }}
+          ></div>
+          <div
+            className='absolute h-0.5 w-full bg-white transition-all duration-500 ease-in-out'
+            style={{ 
+              top: '50%', 
+              left: '50%', 
+              transform: 'translate(-50%, -50%) rotate(-45deg)' 
+            }}
+          ></div>
+        </div>
+      ) : (
+        <div className='flex flex-col items-center justify-center'>
+          <div className='h-0.5 w-5 bg-white transition-all duration-500 ease-in-out'></div>
+          <div className='h-0.5 w-5 bg-white transition-all duration-500 ease-in-out mt-1.5 mb-1.5'></div>
+          <div className='h-0.5 w-5 bg-white transition-all duration-500 ease-in-out'></div>
+        </div>
+      )}
+    </div>
+    {burgerDropdown && (
+      <div className='dropdown'>
+        <p className='dropdown_link'>Eventos Bombando</p>
+        <p className='dropdown_link'>Marketplace</p>
+        <p className='dropdown_link'>About Us</p>
       </div>
+    )}
+  </div>
+</div>
+
 
       {/* Mobile Navigation */}
       <div className='sm:hidden flex relative'>
@@ -131,6 +169,7 @@ const Nav = () => {
                   key={provider.name}
                   onClick={() => {
                     signIn(provider.id);
+                    postUser(session?.user.name, session?.user.id);
                   }}
                   className='black_btn'
                 >

@@ -164,12 +164,14 @@
 }
 
 .dropdown {
-  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
+  @apply absolute right-0 top-full mt-3 w-2/3 p-5 rounded-lg min-w-[400px] flex flex-col gap-2 justify-start items-start text-2xl;
+  background-color: rgba(1, 1, 48, 0.8); /* #010130 with 90% opacity */
 }
 
 .dropdown_link {
-  @apply text-sm font-montserrat text-gray-700 hover:text-gray-500 font-medium;
+  @apply text-2xl font-montserrat text-white hover:text-gray-500 font-medium border-b border-white w-full text-left mb-8 p-1;
 }
+
 
 /* profileCard Component */
 .profile_card {
@@ -190,7 +192,17 @@
 }
 
 .dev_img {
-  @apply rounded-full object-contain;
+  @apply rounded-full w-32 h-32 bg-center bg-cover;
+}
+
+.dev_img::before {
+  content: "";
+  float: left;
+  padding-top: 100%;
+}
+
+.dev_person {
+  @apply flex flex-col items-center text-center;
 }
 
 .prompt_box{
