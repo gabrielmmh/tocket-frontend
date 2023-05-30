@@ -10,6 +10,7 @@ const Nav = () => {
 
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
+  const [burgerDropdown, setBurgerDropdown] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -18,13 +19,13 @@ const Nav = () => {
     })();
   }, []);
 
-  const postUser = async (user) => {
+  const postUser = async (sessionId) => {
     const response = await fetch("http://localhost:8000/users/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify(sessionId),
     });
     const data = await response.json();
     console.log(data);
@@ -43,10 +44,10 @@ const Nav = () => {
       </Link>
 
       {/* Desktop Navigation */}
-      <div className='sm:flex hidden'>
+      <div className='sm:flex hidden items-center'>
         {session?.user ? (
-          <div className='flex gap-3 md:gap-5'>
-            <button type='button' onClick={signOut} className='outline_btn'>
+          <div className='flex gap-3 md:gap-5 items-center'>
+            <button type='button' onClick={signOut} className='black_btn'>
               Sign Out
             </button>
 
@@ -61,7 +62,7 @@ const Nav = () => {
             </Link>
           </div>
         ) : (
-          <>
+          <div className='flex gap-3 md:gap-5 items-center'>
             {providers &&
               Object.values(providers).map((provider) => (
                 <button
@@ -69,14 +70,29 @@ const Nav = () => {
                   key={provider.name}
                   onClick={() => {
                     signIn(provider.id);
-                    postUser(session?.user);
+                    postUser(session?.user.id);
                   }}
                   className='black_btn'
                 >
                   Sign in
                 </button>
               ))}
-          </>
+
+            <div className='relative'>
+              <div onClick={() => setBurgerDropdown(!burgerDropdown)}>
+                <div className='h-0.5 w-5 bg-white mb-1.5'></div>
+                <div className='h-0.5 w-5 bg-white mb-1.5'></div>
+                <div className='h-0.5 w-5 bg-white'></div>
+              </div>
+              {burgerDropdown && (
+                <div className='dropdown bg-[#010130] opacity-90'>
+                  <p className='dropdown_link'>Text 1</p>
+                  <p className='dropdown_link'>Text 2</p>
+                  <p className='dropdown_link'>Text 3</p>
+                </div>
+              )}
+            </div>
+          </div>
         )}
       </div>
 
@@ -131,6 +147,7 @@ const Nav = () => {
                   key={provider.name}
                   onClick={() => {
                     signIn(provider.id);
+                    postUser(session?.user.id);
                   }}
                   className='black_btn'
                 >
