@@ -248,6 +248,41 @@ const Feed = () => {
         <p className='text-white text-center' >A Tocket é um marketplace de ingressos, que possibilita a venda primária e secundária por meio de contratos inteligentes na blockchain. Somos um grupo de alunos de engenharia de computação no Insper com o objetivo de garantir ao máximo a segurança e praticidade na compra e venda de ingressos.</p>
       </div>
 
+      <div className='dev_card'>
+        <img 
+          src='/assets/images/profilePlaceHolder.jpg'
+          alt='Profile1'
+          width={120}
+          height={40}
+          className='dev_img'
+        />      
+          
+        <img 
+          src='/assets/images/profilePlaceHolder.jpg'
+          alt='Profile2'
+          width={120}
+          height={40}
+          className='dev_img'
+        />
+
+        <img 
+          src='/assets/images/profilePlaceHolder.jpg'
+          alt='Profile3'
+          width={120}
+          height={40}
+          className='dev_img'
+        />
+
+        <img 
+          src='/assets/images/profilePlaceHolder.jpg'
+          alt='Profile4'
+          width={120}
+          height={40}
+          className='dev_img'
+        />
+
+      </div>
+
       
     </section>
   )
