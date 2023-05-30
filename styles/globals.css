@@ -160,21 +160,12 @@
 }
 
 .dropdown {
-  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg min-w-[210px] flex flex-col gap-2 justify-end items-end;
-  background-color: rgba(1, 1, 48, 0.9); /* #010130 with 90% opacity */
+  @apply absolute right-0 top-full mt-3 w-2/3 p-5 rounded-lg min-w-[400px] flex flex-col gap-2 justify-start items-start text-2xl;
+  background-color: rgba(1, 1, 48, 0.8); /* #010130 with 90% opacity */
 }
 
 .dropdown_link {
-  @apply text-sm font-montserrat text-white hover:text-gray-500 font-medium border-b border-white;
-}
-
-.dropdown {
-  @apply absolute right-0 top-full mt-3 w-1/3 p-5 rounded-lg min-w-[210px] flex flex-col gap-2 justify-start items-start;
-  background-color: rgba(1, 1, 48, 0.9); /* #010130 with 90% opacity */
-}
-
-.dropdown_link {
-  @apply text-sm font-montserrat text-white hover:text-gray-500 font-medium border-b border-white w-full text-left;
+  @apply text-2xl font-montserrat text-white hover:text-gray-500 font-medium border-b border-white w-full text-left mb-8 p-1;
 }
 
 
