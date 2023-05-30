@@ -27,71 +27,114 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick, classname 
     setTimeout(() => setCopied(false), 3000);
   };
 
+  // const PromptCardList = ({ data, handleTagClick }) => {
+  //   return(
+  //     <div className="profile_layout">
+  //       {data.map((post) => (
+  //         <PromptCard
+  //           key={post._id}
+  //           post={post}
+  //           handleTagClick={handleTagClick}
+  //           classname={"prompt_card"}
+  //         />
+  //       ))}
+  //     </div>
+  //   )
+  // }
+
+  // Estrutura do dicionário
+//   [
+//     {
+//         "id": 1,
+//         "name": "Tequilada Insper",
+//         "info": "We are all Freaks",
+//         "img": "https://d106p58duwuiz5.cloudfront.net/event/cover/5539e5abffa0d9e4fa5e960bf1148c45.jpg",
+//         "date": "2023-07-20T21:00:00Z"
+//     },
+//     {
+//         "id": 2,
+//         "name": "Baile do Tubarão",
+//         "info": "Fabrica de Funk",
+//         "img": "https://images.sympla.com.br/6237362d0c2fb-xs.jpg",
+//         "date": "2023-08-26T20:00:00Z"
+//     },
+//     {
+//         "id": 3,
+//         "name": "Festa da Uva",
+//         "info": "9 Expo Vinhos Jundiaí",
+//         "img": "https://www.baressp.com.br/eventos/fotos2/festa-da-uva-jundiai-baressp-min.jpg0NDQ0NDQ0NDQ0NDQ0N",
+//         "date": "2023-08-13T10:00:00Z"
+//     },
+//     {
+//         "id": 4,
+//         "name": "Rock in Rio 2024",
+//         "info": "Rock no Rio",
+//         "img": "https://portalpopline.com.br/wp-content/uploads/2022/08/rock-in-rio-2.jpg",
+//         "date": "2024-10-29T12:00:00Z"
+//     },
+//     {
+//         "id": 5,
+//         "name": "Baile do Hawaii",
+//         "info": "Festa dos uculele",
+//         "img": "https://s3.guicheweb.com.br/imagenseventos/20-10-2022_13-54-45.png",
+//         "date": "2023-09-30T18:00:00Z"
+//     },
+//     {
+//         "id": 6,
+//         "name": "Farofada Universitária - Festa do Branco",
+//         "info": "Varios Artista",
+//         "img": "https://d106p58duwuiz5.cloudfront.net/event/cover/902b5f2346eb75e92e0df56e75a5b7d1.png",
+//         "date": "2023-07-14T21:00:00Z"
+//     },
+//     {
+//         "id": 7,
+//         "name": "Telegram Party",
+//         "info": "sla festa do telegram kkkkkkkkk",
+//         "img": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6889166b-339a-41b5-8801-db89bd2182e7/dchekoq-7f569aac-10ea-459a-ac3a-63b4fc829451.jpg/v1/fill/w_800,h_800,q_75,strp/telegram_party_flyer___psd",
+//         "date": "2023-06-05T19:00:00Z"
+//     },
+//     {
+//         "id": 8,
+//         "name": "UFC 289",
+//         "info": "Nunes x Aldana",
+//         "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/inline/s3/2023-05/289_SG_POR_SMA_POR_1200x1200.jpg?itok=cVorxDHu",
+//         "date": "2023-06-22T01:00:00Z"
+//     },
+//     {
+//         "id": 9,
+//         "name": "Expo Serra",
+//         "info": "sindicato rural de Tangara da Serra",
+//         "img": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhETEhEVFhUVEhoYGBUSGBoSFhUYFRUXGBUWGBcYKCggGholGxgZITEtJSkrLi46GCEzODMsNygtLisBCgoKDg0OGxAQGi0lICUtLS0vLy4tLy0vLS0tNy0tLS0tLS0tLS0rLS4tL",
+//         "date": "2023-10-11T11:00:00Z"
+//     }
+// ]
   return (
-    <div className={classname}>
-      <div className='flex justify-between items-start gap-5'>
-        <div
-          className='flex-1 flex justify-start items-center gap-3 cursor-pointer'
-          onClick={handleProfileClick}
-        >
-          {/* <Image
-            src={post.creator.image}
-            alt='user_image'
-            width={40}
-            height={40}
-            className='rounded-full object-contain'
-          /> */}
-
-          <div className='flex flex-col'>
-            <h3 className='font-montserrat text-white/80'>
-              {post.user.name}
-            </h3>
-            <p className='font-montserrat text-white/70 text-sm '>
-              {post.user.email}
-            </p>
-          </div>
-        </div>
-
-        <div className='copy_btn' onClick={handleCopy}>
-          <Image
-            src={
-              copied === post.prompt
-                ? "/assets/icons/tick.svg"
-                : "/assets/icons/copy.svg"
-            }
-            alt={copied === post.prompt ? "tick_icon" : "copy_icon"}
-            width={12}
-            height={12}
-          />
-        </div>
-      </div>
-
-      <p className='my-4 font-satoshi text-sm text-gray-700'>{post.prompt}</p>
-      <p
-        className='font-inter text-sm blue_gradient cursor-pointer'
-        onClick={() => handleTagClick && handleTagClick(post.tag)}
-      >
-        #{post.tag}
-      </p>
-
-      {/* {session?.user.id === post.creator._id && pathName === "/profile" && ( */}
-      {/* {pathName === "/profile" && ( */}
-        <div className='mt-5 flex-center gap-4 border-t border-gray-100 pt-3'>
-          <p
-            className='font-inter text-sm green_gradient cursor-pointer'
-            onClick={handleEdit}
-          >
-            Edit
-          </p>
-          <p
-            className='font-inter text-sm orange_gradient cursor-pointer'
-            onClick={handleDelete}
-          >
-            Delete
-          </p>
-        </div>
-      {/* )} */}
-    </div>
+    // <div className={classname}>
+    //   <div className='items-center flex-around'>
+    
+    //     <div
+    //       className='flex flex-col gap-3 cursor-pointer items-center'
+    //       onClick={handleProfileClick}
+    //     >
+    //         <h3 className='font-montserrat text-white/80'>
+    //           {post.name}
+    //         </h3>
+    //         {/* <p className='font-montserrat text-white/70 text-sm '>
+    //           {post.info}
+    //         </p> */}
+      
+            <Image
+              src={post.img}
+              alt={`${post.name} photo`}
+              width={400}
+              height={200}
+              className='rounded-lg'
+            />
+          
+  //       </div>
+  //     </div>  
+  //     {/* )} */}
+  // </div>
   );
 };
 

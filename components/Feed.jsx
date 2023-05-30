@@ -20,6 +20,21 @@ const PromptCardList = ({ data, handleTagClick }) => {
   )
 }
 
+const ImgList = ({data}) => {
+  return(
+    <div className="profile_layout">
+      {data.map((post) => (
+        <PromptCard
+          key={post._id}
+          post={post}
+          handleTagClick={handleTagClick}
+          classname={"prompt_card"}
+        />
+      ))}
+    </div>
+  )
+}
+
 const Feed = () => {
   const [searchText, setsearchText] = useState('');
   const [posts, setPosts] = useState([]);
@@ -192,20 +207,27 @@ const Feed = () => {
 
   }, []);
 
-  useEffect(() => {
-    console.log(events);
-    const e = events.map(event => (
-      <Link href={`/events/${event.id}`}>
-        <Image
-          src={event.img}
-          alt={`${event.name} photo`}
-          width={100}
-          height={100}
-        />
-      </Link>
-    ));
-    setEventDiv(e);
-  }, [events]);
+  // useEffect(() => {
+  //   console.log(events);
+  //   const event = events.map(event => (
+  //     // <Link href={`/events/${event.id}`}>
+  //     //   <Image
+  //     //     src={event.img}
+  //     //     alt={`${event.name} photo`}
+  //     //     width={100}
+  //     //     height={100}
+  //     //   />
+  //     // </Link>
+  //   // ));
+  //   <div className="prompt_box">
+  //     <PromptCardList
+  //       data={events}
+  //       handleTagClick={() => {}}
+  //       />
+  //       </div>
+  //       ));
+  //   setEventDiv(event);
+  // }, [events]);
 
   return (
     <section className="feed">
@@ -227,13 +249,12 @@ const Feed = () => {
         />
       </form>
 
-    {/* <div className="prompt_box">
+    <div className="prompt_box">
       <PromptCardList
         data={events}
         handleTagClick={() => {}}
-      />
-    </div> */}
-    {eventDiv}
+        />
+        </div>
 
     <button className="marketplace hover:animate-pulse">
       Marketplace
