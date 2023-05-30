@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 
-const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick, classname }) => {
+const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick, classname, posts }) => {
   // const { data: session } = useSession();
   const data = post;
   const pathName = usePathname();
@@ -122,7 +122,14 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick, classname 
     //         {/* <p className='font-montserrat text-white/70 text-sm '>
     //           {post.info}
     //         </p> */}
-      
+    // <Link href={`/events/${event.id}`}>
+    //     //   <Image
+    //     //     src={event.img}
+    //     //     alt={`${event.name} photo`}
+    //     //     width={100}
+    //     //     height={100}
+    //     //   />
+    //     // </Link>
             <Image
               src={post.img}
               alt={`${post.name} photo`}

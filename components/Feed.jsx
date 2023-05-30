@@ -9,27 +9,15 @@ const PromptCardList = ({ data, handleTagClick }) => {
   return(
     <div className="profile_layout">
       {data.map((post) => (
+        <Link href={`/events/${post.id}`}>
         <PromptCard
           key={post._id}
           post={post}
           handleTagClick={handleTagClick}
           classname={"prompt_card"}
+          posts={data}
         />
-      ))}
-    </div>
-  )
-}
-
-const ImgList = ({data}) => {
-  return(
-    <div className="profile_layout">
-      {data.map((post) => (
-        <PromptCard
-          key={post._id}
-          post={post}
-          handleTagClick={handleTagClick}
-          classname={"prompt_card"}
-        />
+        </Link>
       ))}
     </div>
   )
@@ -207,27 +195,20 @@ const Feed = () => {
 
   }, []);
 
-  // useEffect(() => {
-  //   console.log(events);
-  //   const event = events.map(event => (
-  //     // <Link href={`/events/${event.id}`}>
-  //     //   <Image
-  //     //     src={event.img}
-  //     //     alt={`${event.name} photo`}
-  //     //     width={100}
-  //     //     height={100}
-  //     //   />
-  //     // </Link>
-  //   // ));
-  //   <div className="prompt_box">
-  //     <PromptCardList
-  //       data={events}
-  //       handleTagClick={() => {}}
-  //       />
-  //       </div>
-  //       ));
-  //   setEventDiv(event);
-  // }, [events]);
+  useEffect(() => {
+    console.log(events);
+    const e = events.map(event => (
+      <Link href={`/events/${event.id}`}>
+        <Image
+          src={event.img}
+          alt={`${event.name} photo`}
+          width={100}
+          height={100}
+        />
+      </Link>
+    ));
+    setEventDiv(e);
+  }, [events]);
 
   return (
     <section className="feed ">
@@ -256,11 +237,10 @@ const Feed = () => {
         handleTagClick={() => {}}
         />
         </div>
-
+    
     <button className="marketplace hover:animate-pulse">
       Marketplace
     </button>
-
 
       <h1 className='head_text_us text-center'>
         About Us
