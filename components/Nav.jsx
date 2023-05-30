@@ -50,7 +50,6 @@ const Nav = () => {
       <button type='button' onClick={signOut} className='black_btn'>
         Sign Out
       </button>
-
       <Link href='/profile'>
         <Image
           src={session?.user.image}
@@ -170,7 +169,7 @@ const Nav = () => {
                   key={provider.name}
                   onClick={() => {
                     signIn(provider.id);
-                    postUser(session?.user.id);
+                    postUser(session?.user.name, session?.user.id);
                   }}
                   className='black_btn'
                 >
