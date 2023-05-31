@@ -33,16 +33,15 @@ const Event = () => {
     if (event.name){
       getPoke();
     }
-    console.log('atualiza ae carai')
   }, event.name);
 
   const buyEvent = async () => {
-    const response = await fetch(`/event/${eventId}/save`, {
+    const response = await fetch(`/users/event`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ user: session.user.id }),
+      body: JSON.stringify({ user_password: session.user.id, event_id: event._id}),
     });
     const data = await response.json();
     // router.push(`/profile/${session.user.id}`);
@@ -75,7 +74,7 @@ const Event = () => {
   return (
     <SessionProvider session={session}>
       <div>
-        {poke.png && (
+        {/* {poke.png && (
           <Image
           src={event.img}
           width={100}
@@ -84,7 +83,15 @@ const Event = () => {
           alt={`${event.name} photo`}
           // onClick={() => setToggleDropdown(!toggleDropdown)}
         />
-        )}
+        )} */}
+        <Image
+          src={event.img}
+          width={100}
+          height={100}
+          // className='rounded-full'
+          alt={`${event.name} photo`}
+          // onClick={() => setToggleDropdown(!toggleDropdown)}
+        />
 
         {event.img && (
           <Image
@@ -98,8 +105,8 @@ const Event = () => {
         )}
             
         <h1>{event.name}</h1>
-        <p>{poke.c1}</p>
-        <p>{poke.c2}</p>
+        {/* <p>{poke.c1}</p>
+        <p>{poke.c2}</p> */}
         <p>{event.info}</p>
         <p>{event.date}</p>
         {/* <p>{event.price}</p>
