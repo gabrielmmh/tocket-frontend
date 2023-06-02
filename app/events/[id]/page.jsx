@@ -82,17 +82,20 @@ const Event = () => {
     <SessionProvider session={session}>
       <section className="feed text-white font-montserrat">
       <div className="mb-10 mt-10"></div>
-      <div className='event_box flex justify-evenly items-center'>
-        {poke.png && (
+      {/* <div className="w-full bg-cover bg-center" style={{backgroundImage: `url(${event.img})`}}>
+      </div> */}
+      {poke.png && (
           <Image
+          className='rounded-lg hover:animate-pulse'
           src={event.img}
-          width={200}
-          height={100}
+          width={600}
+          height={300}
           // className='rounded-full'
           alt={`${event.name} photo`}
           // onClick={() => setToggleDropdown(!toggleDropdown)}
         />
         )}
+      <div className='event_box flex justify-evenly items-center'>
         {/* <Image
           src={event.img}
           width={100}
@@ -101,12 +104,21 @@ const Event = () => {
           alt={`${event.name} photo`}
           // onClick={() => setToggleDropdown(!toggleDropdown)}
         /> */}
-
+        <div className='flex flex-col space-y-5 text-center'>    
+          <h1 className='text-lg'>{event.name}</h1>
+          {/* <p>{poke.c1}</p>
+          <p>{poke.c2}</p> */}
+          <p>{event.info}</p>
+          <p>{new Date(event.date).toLocaleDateString()}</p>
+          {/* <p>{event.price}</p>
+          <p>{event.location}</p> */}
+        </div>
         {event.img && (
           <div className='flex flex-col justify-center items-center text-center'>
             <h1 className='text-lg'>Pokémon do Evento:</h1>
             <h1 className='text-md'>{poke.pokemon}</h1>
             <Image
+            className='hover:animate-spin'
             src={poke.png}
             width={100}
             height={100}
@@ -116,21 +128,12 @@ const Event = () => {
           />
         </div>
         )}
-        <div className='flex flex-col justify-center text-center'>    
-          <h1 className='text-lg'>{event.name}</h1>
-          {/* <p>{poke.c1}</p>
-          <p>{poke.c2}</p> */}
-          <p>{event.info}</p>
-          <p>{new Date(event.date).toLocaleDateString()}</p>
-          {/* <p>{event.price}</p>
-          <p>{event.location}</p> */}
-        </div>
         <button
           type='button'
           onClick={() => {
             buyEvent();
           }}
-          className='h-1/2 w-auto black_btn'
+          className='black_btn w-1/4'
         >
           Comprar
       </button>
