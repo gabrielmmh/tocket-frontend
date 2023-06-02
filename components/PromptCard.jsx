@@ -135,7 +135,7 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick, classname,
               alt={`${post.name} photo`}
               width={400}
               height={200}
-              className='rounded-lg'
+              className='rounded-lg hover:animate-pulse'
             />
           
   //       </div>
