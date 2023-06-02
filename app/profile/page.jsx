@@ -1,9 +1,9 @@
 "use client";
-
+import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-
+import '@styles/globals.css';
 import Profile from "@components/Profile";
 
 const getEvents = async (session) => {
@@ -24,9 +24,43 @@ const MyProfile = () => {
   // const { data: session } = useSession();
 
   const [myPosts, setMyPosts] = useState([]);
+// ------------------------- Copiei do feed ------------------------------------------
+  const [searchText, setsearchText] = useState('');
+  const [posts, setPosts] = useState([]);
+  const [events, setEvents] = useState([]);
+  const [eventDiv, setEventDiv] = useState();
+
+  const handleSearchChange = (e) => {
+  };
 
   useEffect(() => {
+    const getEvents = async () => {
+      const response = await fetch("http://localhost:8000/events/");
+      const data = await response.json();
 
+      setEvents(data);
+    };
+    getEvents();
+
+  }, []);
+
+  useEffect(() => {
+    console.log(events);
+    const e = events.map(event => (
+      <Link href={`/events/${event.id}`}>
+        <Image
+          src={event.img}
+          alt={`${event.name} photo`}
+          width={100}
+          height={100}
+        />
+      </Link>
+    ));
+    setEventDiv(e);
+  }, [events]);
+
+  useEffect(() => {
+// -------------------------------------------------------------------
   }, []);
   useEffect(() => {
     // const fetchPosts = async () => {
@@ -122,9 +156,7 @@ const MyProfile = () => {
 
   return (
     <Profile
-      name='My'
-      desc='Welcome to your personalized profile page. See the shows you have saved'
-      data={myPosts}
+      data={events}
       handleEdit={handleEdit}
       handleDelete={handleDelete}
     />
