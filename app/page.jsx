@@ -6,8 +6,8 @@ import { useEffect, useState }from 'react';
 
 const Home = () => {
 
-  const [events, setEvents] = useState([]);
-  const [eventDiv, setEventDiv] = useState();
+  // const [events, setEvents] = useState([]);
+  // const [eventDiv, setEventDiv] = useState();
 
   // useEffect(() => {
   //   const getEvents = async () => {

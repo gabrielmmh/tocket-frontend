@@ -6,12 +6,28 @@ import { useRouter } from "next/navigation";
 
 import Profile from "@components/Profile";
 
+const getEvents = async (session) => {
+  const response = await fetch("http://localhost:8000/users/event/", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Password": session.user.id
+    }
+  },
+  );
+  // const data = await response.json();
+  // console.log(data);
+};
+
 const MyProfile = () => {
   const router = useRouter();
   // const { data: session } = useSession();
 
   const [myPosts, setMyPosts] = useState([]);
 
+  useEffect(() => {
+
+  }, []);
   useEffect(() => {
     // const fetchPosts = async () => {
     const fetchPosts = () => {

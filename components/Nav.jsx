@@ -5,6 +5,19 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
+const postUser = async (session) => {
+  const response = await fetch("http://localhost:8000/users/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ username: session.user.name, email: session.user.email, password: session.user.id})
+  },
+  );
+  // const data = await response.json();
+  // console.log(data);
+};
+
 const Nav = () => {
   const { data: session } = useSession();
 
@@ -19,17 +32,9 @@ const Nav = () => {
     })();
   }, []);
 
-  const postUser = async (sessionId) => {
-    const response = await fetch("http://localhost:8000/users/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(sessionId),
-    });
-    const data = await response.json();
-    console.log(data);
-  };
+  useEffect(() => {
+    postUser(session);
+  }, session?.user);
 
   return (
     <nav className='flex-between w-full mb-16 pt-3 pb-3 px-16 bg-gradient-to-r from-[#040666] to-[#490a8b] fixed top-0 left-0 right-0 mb-15 z-10'>
@@ -169,7 +174,6 @@ const Nav = () => {
                   key={provider.name}
                   onClick={() => {
                     signIn(provider.id);
-                    postUser(session?.user.name, session?.user.id);
                   }}
                   className='black_btn'
                 >
