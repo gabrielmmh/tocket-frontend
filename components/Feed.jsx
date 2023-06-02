@@ -211,7 +211,7 @@ const Feed = () => {
   }, [events]);
 
   return (
-    <section className="feed ">
+    <section className="feed">
       <div className="mb-10 mt-10"></div>
       <form className="flex flex-row grow-1 w-full flex-center justify-evenly">
       <h1 className='head_text text-center'>
@@ -223,7 +223,7 @@ const Feed = () => {
       </h1>
         <input
           type="text"
-          placeholder="Pesquisar"
+          placeholder="Pesquisar eventos..."
           value={searchText}
           onChange={handleSearchChange}
           required

@@ -1,5 +1,6 @@
 "use client";
 
+import '@styles/globals.css';
 import { SessionProvider, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
@@ -79,11 +80,13 @@ const Event = () => {
 
   return (
     <SessionProvider session={session}>
-      <div>
+      <section className="feed text-white font-montserrat">
+      <div className="mb-10 mt-10"></div>
+      <div className='event_box flex justify-evenly items-center'>
         {poke.png && (
           <Image
           src={event.img}
-          width={100}
+          width={200}
           height={100}
           // className='rounded-full'
           alt={`${event.name} photo`}
@@ -100,33 +103,39 @@ const Event = () => {
         /> */}
 
         {event.img && (
-          <Image
-          src={poke.png}
-          width={100}
-          height={100}
-          // className='rounded-full'
-          alt={`${poke.pokemon} photo`}
-          // onClick={() => setToggleDropdown(!toggleDropdown)}
-        />
+          <div className='flex flex-col justify-center items-center text-center'>
+            <h1 className='text-lg'>Pokémon do Evento:</h1>
+            <h1 className='text-md'>{poke.pokemon}</h1>
+            <Image
+            src={poke.png}
+            width={100}
+            height={100}
+            // className='rounded-full'
+            alt={`${poke.pokemon} photo`}
+            // onClick={() => setToggleDropdown(!toggleDropdown)}
+          />
+        </div>
         )}
-            
-        <h1>{event.name}</h1>
-        {/* <p>{poke.c1}</p>
-        <p>{poke.c2}</p> */}
-        <p>{event.info}</p>
-        <p>{event.date}</p>
-        {/* <p>{event.price}</p>
-        <p>{event.location}</p> */}
+        <div className='flex flex-col justify-center text-center'>    
+          <h1 className='text-lg'>{event.name}</h1>
+          {/* <p>{poke.c1}</p>
+          <p>{poke.c2}</p> */}
+          <p>{event.info}</p>
+          <p>{new Date(event.date).toLocaleDateString()}</p>
+          {/* <p>{event.price}</p>
+          <p>{event.location}</p> */}
+        </div>
         <button
           type='button'
           onClick={() => {
             buyEvent();
           }}
-          className='mt-5 w-full black_btn'
+          className='h-1/2 w-auto black_btn'
         >
           Comprar
       </button>
       </div>
+    </section>
     </SessionProvider>
   );
 };
