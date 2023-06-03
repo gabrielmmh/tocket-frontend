@@ -5,17 +5,17 @@ import Link from 'next/link'
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return(
-    <div className="profile_layout">
+    <div className="profile_layout_myevents">
       {data.map((post) => (
-        <Link href={`/events/${post.id}`}>
+        
         <PromptCard
           key={post._id}
           post={post}
-          handleTagClick={handleTagClick}
+          // handleTagClick={handleTagClick}
           classname={"prompt_card"}
           posts={data}
         />
-        </Link>
+        
       ))}
     </div>
   )
@@ -29,15 +29,12 @@ const Profile = ({ name, desc, data, handleEdit, handleDelete }) => {
           <h1 className='head_text'>Seus Eventos</h1>
           {/* <p className='head_text text-sm'>Veja quais eventos você salvou</p> */}
         </div>
-          <div className="prompt_box">
-          {data.map((post) => (
-            console.log(post._id),
+          <div className="prompt_box_profile">
             <PromptCardList
-            data={data}
-            handleTagClick={() => {}}
+              data={data}
+              // handleTagClick={() => {}}
             />
-          ))}
-      </div>
+        </div>
     </section>
   )
 }
