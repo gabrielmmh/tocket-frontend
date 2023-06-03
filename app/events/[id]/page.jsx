@@ -259,9 +259,8 @@ const Event = () => {
           {event.img && poke.png && (
             <div className='flex flex-col space-y-5 text-center'>    
               <h1 className='text-lg'>{event.name}</h1>
-              {/* <p>{poke.c1}</p>
-              <p>{poke.c2}</p> */}
-              <p>{event.info}</p>
+              <p>Um evento {poke.c1} para um público {poke.c2}</p>
+              {/* <p>{event.info}</p> */}
               <p>{new Date(event.date).toLocaleDateString()}</p>
               {/* <p>{event.price}</p>
               <p>{event.location}</p> */}
