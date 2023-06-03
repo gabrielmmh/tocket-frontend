@@ -60,8 +60,8 @@ const MyProfile = () => {
   return (
     <Profile
       data={myEvents}
-      handleEdit={handleEdit}
-      handleDelete={handleDelete}
+      // handleEdit={handleEdit}
+      // handleDelete={handleDelete}
     />
   );
 };
