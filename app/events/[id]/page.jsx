@@ -1,9 +1,10 @@
 "use client";
 
 import '@styles/globals.css';
-import { SessionProvider, useSession } from "next-auth/react";
+import { SessionProvider, useSession, signIn, signOut, getProviders } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
 
 const Event = () => {
@@ -14,6 +15,7 @@ const Event = () => {
   const [event, setEvent] = useState({});
   const [poke, setPoke] = useState({});
   const [processing, setProcessing] = useState(false);
+  const [providers, setProviders] = useState(null);
   let [myEvents, setMyEvents] = useState([]);
   let [buttonSelected, setButtonSelected] = useState(false);
 
@@ -133,13 +135,25 @@ const Event = () => {
     }
   }, [myEvents]);
 
+  useEffect(() => {
+    (async () => {
+      const res = await getProviders();
+      setProviders(res);
+    })();
+  }, []);
+
   return (
+    <>
+      {session?.user ? (
+        <div>
     <SessionProvider session={session}>
       <section className="feed text-white font-montserrat">
+    
+      {event.img && poke.png && (
       <div className="mb-10 mt-10"></div>
-      {/* <div className="w-full bg-cover bg-center" style={{backgroundImage: `url(${event.img})`}}>
-      </div> */}
-      {poke.png && (
+      )}
+
+      {event.img && poke.png && (
           <Image
           className='rounded-lg hover:animate-pulse'
           src={event.img}
@@ -150,69 +164,147 @@ const Event = () => {
           // onClick={() => setToggleDropdown(!toggleDropdown)}
         />
         )}
+
+      {event.img && poke.png && (
       <div className='event_box flex justify-evenly items-center'>
-        <div className='flex flex-col space-y-5 text-center'>    
-          <h1 className='text-lg'>{event.name}</h1>
-          {/* <p>{poke.c1}</p>
-          <p>{poke.c2}</p> */}
-          <p>{event.info}</p>
-          <p>{new Date(event.date).toLocaleDateString()}</p>
-          {/* <p>{event.price}</p>
-          <p>{event.location}</p> */}
-        </div>
-        {event.img && (
-          <div className='flex flex-col justify-center items-center text-center'>
-            <h1 className='text-lg'>Pokémon do Evento:</h1>
-            <h1 className='text-md'>{poke.pokemon}</h1>
-            <Image
-            className='hover:animate-spin'
-            src={poke.png}
-            width={100}
-            height={100}
-            // className='rounded-full'
-            alt={`${poke.pokemon} photo`}
-            // onClick={() => setToggleDropdown(!toggleDropdown)}
-          />
-        </div>
+        {event.img && poke.png && (
+          <div className='flex flex-col space-y-5 text-center'>    
+            <h1 className='text-lg'>{event.name}</h1>
+            {/* <p>{poke.c1}</p>
+            <p>{poke.c2}</p> */}
+            <p>{event.info}</p>
+            <p>{new Date(event.date).toLocaleDateString()}</p>
+            {/* <p>{event.price}</p>
+            <p>{event.location}</p> */}
+          </div>
         )}
+          {event.img && poke.png && (
+            <div className='flex flex-col justify-center items-center text-center'>
+              <h1 className='text-lg'>Pokémon do Evento:</h1>
+              <h1 className='text-md'>{poke.pokemon}</h1>
+              <Image
+              className='hover:animate-spin'
+              src={poke.png}
+              width={100}
+              height={100}
+              // className='rounded-full'
+              alt={`${poke.pokemon} photo`}
+              // onClick={() => setToggleDropdown(!toggleDropdown)}
+            />
+          </div>
+          )}
 
-        {!checkEvent() && !processing && (
-        <button
-          type='button'
-          onClick={() => {
-            buyEvent();
-            handleClick();
-          }}
-          className='white_btn w-1/4'
-        >
-          Comprar
-      </button>)}
-      {checkEvent() && !processing && (
-        <button
-          type='button'
-          onClick={() => {
-            sellEvent();
-            handleClick();
-          }}
-          className='black_btn w-1/4'
-        >
-          Vender
-      </button>)}
+          {!checkEvent() && !processing && event.img && poke.png && (
+          <button
+            type='button'
+            onClick={() => {
+              buyEvent();
+              handleClick();
+            }}
+            className='white_btn w-1/4'
+          >
+            Comprar
+        </button>)}
+        {checkEvent() && !processing && event.img && poke.png &&(
+          <button
+            type='button'
+            onClick={() => {
+              sellEvent();
+              handleClick();
+            }}
+            className='black_btn w-1/4'
+          >
+            Vender
+        </button>)}
 
-      {processing && (
-        <button
-        type='button'
-        className='gray_btn w-1/4'
-      >
-      <svg class="animate-bounce mt-1 h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
-        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-    </svg>
-        Processando...
-    </button>
-      )}
+        {processing && event.img && poke.png &&(
+          <button
+          type='button'
+          className='gray_btn w-1/4'
+        >
+        <svg class="animate-bounce mt-1 h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
+          <circle class="opacity-1000" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      </svg>
+          Processando...
+      </button>
+        )}
       </div>
+      )}
+      
     </section>
     </SessionProvider>
+    </div>
+      ) : (
+        <div>
+        <section className="feed text-white font-montserrat">
+      
+        {event.img && poke.png && (
+        <div className="mb-10 mt-10"></div>
+        )}
+  
+        {event.img && poke.png && (
+            <Image
+            className='rounded-lg hover:animate-pulse'
+            src={event.img}
+            width={600}
+            height={300}
+            // className='rounded-full'
+            alt={`${event.name} photo`}
+            // onClick={() => setToggleDropdown(!toggleDropdown)}
+          />
+          )}
+  
+        {event.img && poke.png && (
+        <div className='event_box flex justify-evenly items-center'>
+          {event.img && poke.png && (
+            <div className='flex flex-col space-y-5 text-center'>    
+              <h1 className='text-lg'>{event.name}</h1>
+              {/* <p>{poke.c1}</p>
+              <p>{poke.c2}</p> */}
+              <p>{event.info}</p>
+              <p>{new Date(event.date).toLocaleDateString()}</p>
+              {/* <p>{event.price}</p>
+              <p>{event.location}</p> */}
+            </div>
+          )}
+            {event.img && poke.png && (
+              <div className='flex flex-col justify-center items-center text-center'>
+                <h1 className='text-lg'>Pokémon do Evento:</h1>
+                <h1 className='text-md'>{poke.pokemon}</h1>
+                <Image
+                className='hover:animate-spin'
+                src={poke.png}
+                width={100}
+                height={100}
+                // className='rounded-full'
+                alt={`${poke.pokemon} photo`}
+                // onClick={() => setToggleDropdown(!toggleDropdown)}
+              />
+            </div>
+            )}
+
+          {providers &&
+            Object.values(providers).map((provider) => (
+              <button
+                type='button'
+                key={provider.name}
+                onClick={() => {
+                  signIn(provider.id);
+                  postUser(session?.user);
+                }}
+                className='white_btn w-1/4'
+              >
+                Comprar
+              </button>
+          ))}
+          
+        </div>
+        )}
+        
+      </section>
+    </div>
+    )}
+  </>
   );
 };
 
