@@ -11,7 +11,7 @@ const postUser = async (session) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ username: session.user.name, email: session.user.email, password: session.user.id})
+    body: JSON.stringify({ username: session?.user.name, email: session?.user.email, password: session?.user.id})
   },
   );
   // const data = await response.json();
