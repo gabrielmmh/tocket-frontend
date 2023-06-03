@@ -13,6 +13,9 @@ const Event = () => {
   const eventId = pathname.charAt(pathname.length - 1);
   const [event, setEvent] = useState({});
   const [poke, setPoke] = useState({});
+  const [processing, setProcessing] = useState(false);
+  let [myEvents, setMyEvents] = useState([]);
+  let [buttonSelected, setButtonSelected] = useState(false);
 
   const getPoke = async () => {
     console.log(event.name)
@@ -49,34 +52,86 @@ const Event = () => {
       body: JSON.stringify({ event_id: eventId, password: session.user.id})
     },
     );
-    const data = await response.json();
+    const data = response;
   };
-    // router.push(`/profile/${session.user.id}`);
 
-// Funcoes anteriores, podem ser uteis
-  // const handleEdit = (post) => {
-  //   router.push(`/update-prompt?id=${post._id}`);
-  // };
+  const sellEvent = async () => {
+    const response = await fetch("http://localhost:8000/users/event/", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ event_id: eventId, password: session.user.id})
+    },
+    );
+    const data = response;
+  };
 
-  // const handleDelete = async (post) => {
-  //   const hasConfirmed = confirm(
-  //     "Are you sure you want to delete this prompt?"
-  //   );
 
-  //   if (hasConfirmed) {
-  //     try {
-  //       await fetch(`/api/prompt/${post._id.toString()}`, {
-  //         method: "DELETE",
-  //       });
+  useEffect(() => {
 
-  //       const filteredPosts = myPosts.filter((item) => item._id !== post._id);
+    const getUserEvents = async (session) => {
+      // console.log("---------------- password: ", session?.user.id)
+      const response = await fetch("http://localhost:8000/users/event/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ password: session?.user.id, })
+      },
+      );
+      const data = await response.json();
+      console.log(data);
+      setMyEvents(data);
+    };
+    
+    getUserEvents(session);
+  }, [session?.user]);
 
-  //       setMyPosts(filteredPosts);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  // };
+  function checkEvent(){
+    for (let i = 0; i < myEvents.length; i++){
+      if (myEvents[i].name == event.name){
+        console.log("true")
+        return true;
+      }
+    }
+    console.log("false")
+    return false;
+  }
+
+  const handleClick = async () => {
+    setProcessing(true);
+
+    if (!checkEvent()) {
+      await buyEvent();
+    } else {
+      await sellEvent();
+    }
+
+    const getUserEvents = async (session) => {
+      // console.log("---------------- password: ", session?.user.id)
+      const response = await fetch("http://localhost:8000/users/event/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ password: session?.user.id, })
+      },
+      );
+      const data = await response.json();
+      console.log(data);
+      setMyEvents(data);
+    };
+    
+    await getUserEvents(session);
+    setProcessing(false);
+  };
+
+  useEffect(() => {
+    if (checkEvent()){
+      checkEvent();
+    }
+  }, [myEvents]);
 
   return (
     <SessionProvider session={session}>
@@ -96,14 +151,6 @@ const Event = () => {
         />
         )}
       <div className='event_box flex justify-evenly items-center'>
-        {/* <Image
-          src={event.img}
-          width={100}
-          height={100}
-          // className='rounded-full'
-          alt={`${event.name} photo`}
-          // onClick={() => setToggleDropdown(!toggleDropdown)}
-        /> */}
         <div className='flex flex-col space-y-5 text-center'>    
           <h1 className='text-lg'>{event.name}</h1>
           {/* <p>{poke.c1}</p>
@@ -128,15 +175,41 @@ const Event = () => {
           />
         </div>
         )}
+
+        {!checkEvent() && !processing && (
         <button
           type='button'
           onClick={() => {
             buyEvent();
+            handleClick();
+          }}
+          className='white_btn w-1/4'
+        >
+          Comprar
+      </button>)}
+      {checkEvent() && !processing && (
+        <button
+          type='button'
+          onClick={() => {
+            sellEvent();
+            handleClick();
           }}
           className='black_btn w-1/4'
         >
-          Comprar
-      </button>
+          Vender
+      </button>)}
+
+      {processing && (
+        <button
+        type='button'
+        className='gray_btn w-1/4'
+      >
+      <svg class="animate-bounce mt-1 h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+    </svg>
+        Processando...
+    </button>
+      )}
       </div>
     </section>
     </SessionProvider>

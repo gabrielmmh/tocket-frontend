@@ -36,7 +36,7 @@ const login = () => {
                             onClick={() => {
                                 signIn('google');
                             }}
-                            className='black_btn'
+                            className='white_btn'
                             >
                             Sign in
                             </button>

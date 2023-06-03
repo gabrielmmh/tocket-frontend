@@ -78,8 +78,24 @@
   @apply relative z-10 flex justify-center items-center flex-col mx-auto;
 }
 
-.black_btn {
+.white_btn {
   @apply rounded-full border border-black bg-white py-1.5 px-5 text-black transition-all hover:bg-white/50 hover:text-black text-center text-sm font-montserrat flex items-center justify-center;
+}
+
+.black_btn {
+  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-black/50 hover:text-white text-center text-sm font-montserrat flex items-center justify-center;
+}
+
+.purple_gradient_btn {
+  @apply rounded-full border border-black bg-gradient-to-r from-[#040666] to-[#490a8b] py-1.5 px-5 text-white transition-all hover:from-[#490a8b] hover:to-[#040666] text-center text-sm font-montserrat flex items-center justify-center;
+}
+
+.marketplace_btn {
+  @apply rounded-full border border-black bg-gradient-to-r from-[#040666] to-[#490a8b] py-1.5 px-5 text-white transition-all hover:from-[#490a8b] hover:to-[#040666] text-center text-sm font-montserrat flex items-center justify-center;
+}
+
+.gray_btn {
+  @apply rounded-full border border-black bg-gray-500 py-1.5 px-5 text-white transition-all text-center text-sm font-montserrat flex items-center justify-center;
 }
 
 /* .marketplace{

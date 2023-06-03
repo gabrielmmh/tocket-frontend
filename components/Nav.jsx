@@ -77,7 +77,7 @@ const Nav = () => {
                       setToggleDropdown(false);
                       signOut();
                     }}
-                    className='w-1/2 black_btn'
+                    className='w-1/2 white_btn'
                   >
                     Sign Out
                   </button>
@@ -96,7 +96,7 @@ const Nav = () => {
               signIn(provider.id);
               postUser(session?.user);
             }}
-            className='black_btn'
+            className='white_btn'
           >
             Sign in
           </button>
@@ -171,7 +171,7 @@ const Nav = () => {
                     setToggleDropdown(false);
                     signOut();
                   }}
-                  className='mt-5 w-full black_btn'
+                  className='mt-5 w-full white_btn'
                 >
                   Sign Out
                 </button>
@@ -188,7 +188,7 @@ const Nav = () => {
                   onClick={() => {
                     signIn(provider.id);
                   }}
-                  className='black_btn'
+                  className='white_btn'
                 >
                   Sign in
                 </button>
