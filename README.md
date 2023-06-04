@@ -1,4 +1,4 @@
-# Repositório do frontend do projeto 3 da disciplina TecWeb
+# Repositório do front-end do projeto 3 da disciplina TecWeb
 ## Insper 2023.1
 
 # Tocket: Marketplace de Ingressos
